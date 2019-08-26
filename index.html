@@ -9,67 +9,105 @@
         }
     </style>
     <script type="text/javascript">
-        var tries, articles, articleCount;
-        function customPop(a,b,c,d,e,f){};
+        // function getPosition(el) {
+        //     var xPosition = 0;
+        //     var yPosition = 0;
+        //
+        //     while (el) {
+        //         if (el.tagName == "BODY") {
+        //             // deal with browser quirks with body/window/document and page scroll
+        //             var xScrollPos = el.scrollLeft || document.documentElement.scrollLeft;
+        //             var yScrollPos = el.scrollTop || document.documentElement.scrollTop;
+        //
+        //             xPosition += (el.offsetLeft - xScrollPos + el.clientLeft);
+        //             yPosition += (el.offsetTop - yScrollPos + el.clientTop);
+        //         } else {
+        //             xPosition += (el.offsetLeft - el.scrollLeft + el.clientLeft);
+        //             yPosition += (el.offsetTop - el.scrollTop + el.clientTop);
+        //         }
+        //
+        //         el = el.offsetParent;
+        //     }
+        //     console.log(xPosition + ", " + yPosition);
+        //     return {
+        //         x: xPosition,
+        //         y: yPosition
+        //     };
+        // }
+
+        var tries, articles, articleCount, spanText, elHidden;
+
+        function customPop(a, b, c, d, e, f) {
+        }
 
         function prepArticles() {
+
+            var picker = document.getElementById("picker");
             var patt = /(\bthe\b|\ba\b|\ban\b)/i; //the modifer \b means 'word boundary'. So having one at the start and end of the regex means 'match whole word'
-            var dom = document.getElementsByTagName("span");
+            var dom = document.getElementById("terry").getElementsByTagName("span");
             tries = 0;
             articles = 0;
-            [].forEach.call(dom, function(el, idx){
-                el.addEventListener("click", function(){
-                   ++tries;
-                   console.log(tries);
-                });
-               if(patt.test(el.textContent)){
-                   articles++;
-                   el.classList.add("article");
-                   el.style.display = "none";
-                   el.nextElementSibling.addEventListener("click", function(){
-                       this.previousElementSibling.style.display = "inline";
-                       --articleCount;
-                       console.log(tries + " tries. articles: " + articleCount);
-                       if(articleCount === 0){
-                           window.alert("all done\nYour score is " + Math.round(100 * articles / tries) + "%");
-                       }
-                   });
-               }
+
+            function checky() {
+                ++tries;
+                if (new RegExp("\\b" + spanText + "\\b", "i").test("" + this.id)) {
+                    elHidden.style.display = "inline";
+                    document.getElementById("picker").style.display = "none";
+                    --articleCount;
+                    if (articleCount === 0) {
+                        window.alert("all done\nYour score is " + Math.round(100 * articles / tries) + "%");
+                    }
+                }
+            }
+
+            [].forEach.call(dom, function (el) {
+
+                if (patt.test(el.textContent)) {
+                    articles++;
+                    el.classList.add("article");
+                    el.style.display = "none";
+                    el.nextElementSibling.addEventListener("click", function (e) {
+                        console.log(e.clientX + ", " + e.clientY);
+                        picker.style.left = e.clientX - 80 + "px";
+                        picker.style.top = e.clientY + 30 + "px";
+                        picker.style.display = "block";
+                        spanText = el.textContent;
+                        document.getElementById("the").addEventListener("click", checky);
+                        document.getElementById("a").addEventListener("click", checky);
+                        document.getElementById("an").addEventListener("click", checky);
+                        elHidden = el;
+                    });
+                }
             });
-        window.alert("There are " + articles + " articles in this text.");
-        articleCount = articles;
+            window.alert("There are " + articles + " articles in this text.");
+            articleCount = articles;
         }
 
-        function restoreArticles() {
-            var articles = document.getElementsByClassName("article");
-            Object.keys(articles).forEach(function (key) {
-                    articles[key].style.backgroundColor = "yellow";
-            });
-        }
     </script>
 </head>
 <body>
-<span class="word" onclick="customPop(this, 'The', '37470', '870', 'THE', '1');">The</span>
+<div id="terry">
+    <span class="word" onclick="customPop(this, 'The', '37470', '870', 'THE', '1');">The</span>
     <span class="word" onclick="customPop(this, 'vegetable', '38564', '1964', 'VEGETABLE', '2');">vegetable</span> <span
-            class="word" onclick="customPop(this, 'seller', '4142', '752', 'SELL', '1');">seller</span> <span
-            class="word" onclick="customPop(this, 'in', '37026', '426', 'IN', '1');">in</span> <span class="word"
-                                                                                                     onclick="customPop(this, 'the', '37470', '870', 'THE', '1');">the</span>
+        class="word" onclick="customPop(this, 'seller', '4142', '752', 'SELL', '1');">seller</span> <span
+        class="word" onclick="customPop(this, 'in', '37026', '426', 'IN', '1');">in</span> <span class="word"
+                                                                                                 onclick="customPop(this, 'the', '37470', '870', 'THE', '1');">the</span>
     <span class="word" onclick="customPop(this, 'southern', '38461', '1861', 'SOUTHERN', '2');">southern</span> <span
-            class="word" onclick="customPop(this, 'Seoul', '520', '0', 'SLARTIBARTFAST', '3');">Seoul</span> <span
-            class="word" onclick="customPop(this, 'suburb', '41456', '4856', 'SUBURB', '5');">suburb</span> <span
-            class="word" onclick="customPop(this, 'looked', '2761', '499', 'LOOK', '1');">looked</span> <span
-            class="word" onclick="customPop(this, 'on', '37188', '588', 'ON', '1');">on</span>, <span class="word"
-                                                                                                      onclick="customPop(this, 'annoyed', '5507', '1040', 'ANNOY', '2');">annoyed</span>.
+        class="word" onclick="customPop(this, 'Seoul', '520', '0', 'SLARTIBARTFAST', '3');">Seoul</span> <span
+        class="word" onclick="customPop(this, 'suburb', '41456', '4856', 'SUBURB', '5');">suburb</span> <span
+        class="word" onclick="customPop(this, 'looked', '2761', '499', 'LOOK', '1');">looked</span> <span
+        class="word" onclick="customPop(this, 'on', '37188', '588', 'ON', '1');">on</span>, <span class="word"
+                                                                                                  onclick="customPop(this, 'annoyed', '5507', '1040', 'ANNOY', '2');">annoyed</span>.
     <span class="word" onclick="customPop(this, 'This', '37479', '879', 'THIS', '1');">This</span> <span class="word"
                                                                                                          onclick="customPop(this, 'was', '365', '77', 'BE', '1');">was</span>
     <span class="word" onclick="customPop(this, 'one', '37190', '590', 'ONE', '1');">one</span> <span class="word"
                                                                                                       onclick="customPop(this, 'picky', '544', '0', 'SLARTIBARTFAST', '3');">picky</span>
     <span class="word" onclick="customPop(this, 'customer', '37842', '1242', 'CUSTOMER', '2');">customer</span> <span
-            class="word" onclick="customPop(this, 'and', '36638', '38', 'AND', '1');">and</span> <span class="word"
-                                                                                                       onclick="customPop(this, 'she', '37365', '765', 'SHE', '1');">she</span>
-    <span class="word" onclick="customPop(this, 'didn't', '570', '0', 'SLARTIBARTFAST', '3');">didn't</span> <span
-            class="word" onclick="customPop(this, 'even', '36883', '283', 'EVEN', '1');">even</span> <span class="word"
-                                                                                                           onclick="customPop(this, 'buy', '36723', '123', 'BUY', '1');">buy</span>
+        class="word" onclick="customPop(this, 'and', '36638', '38', 'AND', '1');">and</span> <span class="word"
+                                                                                                   onclick="customPop(this, 'she', '37365', '765', 'SHE', '1');">she</span>
+    <span class="word" onclick="customPop(this, 'didnt', '570', '0', 'SLARTIBARTFAST', '3');">didn't</span> <span
+        class="word" onclick="customPop(this, 'even', '36883', '283', 'EVEN', '1');">even</span> <span class="word"
+                                                                                                       onclick="customPop(this, 'buy', '36723', '123', 'BUY', '1');">buy</span>
     <span class="word" onclick="customPop(this, 'a', '97', '0', 'SLARTIBARTFAST', '3');">a</span> <span class="word"
                                                                                                         onclick="customPop(this, 'lot', '37102', '502', 'LOT', '1');">lot</span>
     <span class="word" onclick="customPop(this, 'of', '37181', '581', 'OF', '1');">of</span> <span class="word"
@@ -83,15 +121,15 @@
     <span class="word" onclick="customPop(this, 'for', '36937', '337', 'FOR', '1');">for</span> <span class="word"
                                                                                                       onclick="customPop(this, 'as', '36655', '55', 'AS', '1');">as</span>
     <span class="word" onclick="customPop(this, 'little', '37092', '492', 'LITTLE', '1');">little</span> <span
-            class="word" onclick="customPop(this, 'as', '36655', '55', 'AS', '1');">as</span> <span class="word"
-                                                                                                    onclick="customPop(this, 'she', '37365', '765', 'SHE', '1');">she</span>
+        class="word" onclick="customPop(this, 'as', '36655', '55', 'AS', '1');">as</span> <span class="word"
+                                                                                                onclick="customPop(this, 'she', '37365', '765', 'SHE', '1');">she</span>
     <span class="word" onclick="customPop(this, 'could', '36797', '197', 'COULD', '1');">could</span> <span class="word"
                                                                                                             onclick="customPop(this, 'pay', '37221', '621', 'PAY', '1');">pay</span>.
     <span class="word" onclick="customPop(this, 'On', '37188', '588', 'ON', '1');">On</span> <span class="word"
                                                                                                    onclick="customPop(this, 'this', '37479', '879', 'THIS', '1');">this</span>
     <span class="word" onclick="customPop(this, 'occasion', '37179', '579', 'OCCASION', '1');">occasion</span> <span
-            class="word" onclick="customPop(this, 'it', '37043', '443', 'IT', '1');">it</span> <span class="word"
-                                                                                                     onclick="customPop(this, 'was', '365', '77', 'BE', '1');">was</span>
+        class="word" onclick="customPop(this, 'it', '37043', '443', 'IT', '1');">it</span> <span class="word"
+                                                                                                 onclick="customPop(this, 'was', '365', '77', 'BE', '1');">was</span>
     <span class="word" onclick="customPop(this, 'a', '97', '0', 'SLARTIBARTFAST', '3');">a</span> <span class="word"
                                                                                                         onclick="customPop(this, 'lettuce', '42098', '5498', 'LETTUCE', '6');">lettuce</span>
     <span class="word" onclick="customPop(this, 'for', '36937', '337', 'FOR', '1');">for</span> <span class="word"
@@ -99,65 +137,65 @@
     <span class="word" onclick="customPop(this, 'won', '5242', '974', 'WIN', '1');">won</span> (<span class="word"
                                                                                                       onclick="customPop(this, 'about', '36603', '3', 'ABOUT', '1');">about</span>
     <span class="word" onclick="customPop(this, '$0.40', '230', '0', 'SLARTIBARTFAST', '3');">$0.40</span>; <span
-            class="word"
-            onclick="customPop(this, '£0.33', '359', '0', 'SLARTIBARTFAST', '3');">£0.33</span>).<br><br><span
-            class="word" onclick="customPop(this, 'Uttering', '16555', '3941', 'UTTER', '4');">Uttering</span> <span
-            class="word" onclick="customPop(this, 'only', '37191', '591', 'ONLY', '1');">only</span> <span class="word"
-                                                                                                           onclick="customPop(this, 'a', '97', '0', 'SLARTIBARTFAST', '3');">a</span>
+        class="word"
+        onclick="customPop(this, '£0.33', '359', '0', 'SLARTIBARTFAST', '3');">£0.33</span>).<br><br><span
+        class="word" onclick="customPop(this, 'Uttering', '16555', '3941', 'UTTER', '4');">Uttering</span> <span
+        class="word" onclick="customPop(this, 'only', '37191', '591', 'ONLY', '1');">only</span> <span class="word"
+                                                                                                       onclick="customPop(this, 'a', '97', '0', 'SLARTIBARTFAST', '3');">a</span>
     <span class="word" onclick="customPop(this, 'few', '36914', '314', 'FEW', '1');">few</span> <span class="word"
                                                                                                       onclick="customPop(this, 'words', '5268', '984', 'WORD', '1');">words</span>,
     <span class="word" onclick="customPop(this, 'Han', '279', '0', 'SLARTIBARTFAST', '3');">Han</span> <span
-            class="word" onclick="customPop(this, 'handed', '2111', '384', 'HAND', '1');">handed</span> <span
-            class="word" onclick="customPop(this, 'over', '37204', '604', 'OVER', '1');">over</span> <span class="word"
-                                                                                                           onclick="customPop(this, 'her', '4241', '765', 'SHE', '1');">her</span>
+        class="word" onclick="customPop(this, 'handed', '2111', '384', 'HAND', '1');">handed</span> <span
+        class="word" onclick="customPop(this, 'over', '37204', '604', 'OVER', '1');">over</span> <span class="word"
+                                                                                                       onclick="customPop(this, 'her', '4241', '765', 'SHE', '1');">her</span>
     <span class="word" onclick="customPop(this, 'money', '37141', '541', 'MONEY', '1');">money</span> <span class="word"
                                                                                                             onclick="customPop(this, 'and', '36638', '38', 'AND', '1');">and</span>
     <span class="word" onclick="customPop(this, 'left', '37076', '476', 'LEFT', '1');">left</span> <span class="word"
                                                                                                          onclick="customPop(this, 'with', '37578', '978', 'WITH', '1');">with</span>
     <span class="word" onclick="customPop(this, 'her', '4241', '765', 'SHE', '1');">her</span> <span class="word"
                                                                                                      onclick="customPop(this, 'son', '37398', '798', 'SON', '1');">son</span>.<br><br><span
-            class="word" onclick="customPop(this, 'Just', '37050', '450', 'JUST', '1');">Just</span> <span class="word"
-                                                                                                           onclick="customPop(this, 'a', '97', '0', 'SLARTIBARTFAST', '3');">a</span>
+        class="word" onclick="customPop(this, 'Just', '37050', '450', 'JUST', '1');">Just</span> <span class="word"
+                                                                                                       onclick="customPop(this, 'a', '97', '0', 'SLARTIBARTFAST', '3');">a</span>
     <span class="word" onclick="customPop(this, 'few', '36914', '314', 'FEW', '1');">few</span> <span class="word"
                                                                                                       onclick="customPop(this, 'weeks', '5165', '956', 'WEEK', '1');">weeks</span>
     <span class="word" onclick="customPop(this, 'later', '2583', '469', 'LATE', '1');">later</span>, <span class="word"
                                                                                                            onclick="customPop(this, 'both', '36705', '105', 'BOTH', '1');">both</span>
     <span class="word" onclick="customPop(this, 'were', '367', '77', 'BE', '1');">were</span> <span class="word"
                                                                                                     onclick="customPop(this, 'dead', '36816', '216', 'DEAD', '1');">dead</span>.<br><br><span
-            class="word" onclick="customPop(this, 'Having', '2164', '390', 'HAVE', '1');">Having</span> <span
-            class="word" onclick="customPop(this, 'fled', '17854', '4347', 'FLEE', '5');">fled</span> <span class="word"
-                                                                                                            onclick="customPop(this, 'food', '36935', '335', 'FOOD', '1');">food</span>
+        class="word" onclick="customPop(this, 'Having', '2164', '390', 'HAVE', '1');">Having</span> <span
+        class="word" onclick="customPop(this, 'fled', '17854', '4347', 'FLEE', '5');">fled</span> <span class="word"
+                                                                                                        onclick="customPop(this, 'food', '36935', '335', 'FOOD', '1');">food</span>
     <span class="word" onclick="customPop(this, 'shortages', '4262', '770', 'SHORT', '1');">shortages</span> <span
-            class="word" onclick="customPop(this, 'in', '37026', '426', 'IN', '1');">in</span> <span class="word"
-                                                                                                     onclick="customPop(this, 'her', '4241', '765', 'SHE', '1');">her</span>
+        class="word" onclick="customPop(this, 'in', '37026', '426', 'IN', '1');">in</span> <span class="word"
+                                                                                                 onclick="customPop(this, 'her', '4241', '765', 'SHE', '1');">her</span>
     <span class="word" onclick="customPop(this, 'native', '40201', '3601', 'NATIVE', '4');">native</span> <span
-            class="word" onclick="customPop(this, 'North', '37171', '571', 'NORTH', '1');">North</span> <span
-            class="word" onclick="customPop(this, 'Korea', '41098', '4498', 'KOREA', '5');">Korea</span> <span
-            class="word" onclick="customPop(this, 'and', '36638', '38', 'AND', '1');">and</span> <span class="word"
-                                                                                                       onclick="customPop(this, 'dreaming', '6765', '1307', 'DREAM', '2');">dreaming</span>
+        class="word" onclick="customPop(this, 'North', '37171', '571', 'NORTH', '1');">North</span> <span
+        class="word" onclick="customPop(this, 'Korea', '41098', '4498', 'KOREA', '5');">Korea</span> <span
+        class="word" onclick="customPop(this, 'and', '36638', '38', 'AND', '1');">and</span> <span class="word"
+                                                                                                   onclick="customPop(this, 'dreaming', '6765', '1307', 'DREAM', '2');">dreaming</span>
     <span class="word" onclick="customPop(this, 'of', '37181', '581', 'OF', '1');">of</span> <span class="word"
                                                                                                    onclick="customPop(this, 'a', '97', '0', 'SLARTIBARTFAST', '3');">a</span>
     <span class="word" onclick="customPop(this, 'new', '37161', '561', 'NEW', '1');">new</span> <span class="word"
                                                                                                       onclick="customPop(this, 'life', '37083', '483', 'LIFE', '1');">life</span>,
     <span class="word" onclick="customPop(this, 'Han', '279', '0', 'SLARTIBARTFAST', '3');">Han</span> <span
-            class="word" onclick="customPop(this, 'and', '36638', '38', 'AND', '1');">and</span> <span class="word"
-                                                                                                       onclick="customPop(this, 'her', '4241', '765', 'SHE', '1');">her</span>
+        class="word" onclick="customPop(this, 'and', '36638', '38', 'AND', '1');">and</span> <span class="word"
+                                                                                                   onclick="customPop(this, 'her', '4241', '765', 'SHE', '1');">her</span>
     <span class="word" onclick="customPop(this, 'son', '37398', '798', 'SON', '1');">son</span> <span class="word"
                                                                                                       onclick="customPop(this, 'are', '357', '77', 'BE', '1');">are</span>
     <span class="word" onclick="customPop(this, 'believed', '417', '87', 'BELIEVE', '1');">believed</span> <span
-            class="word" onclick="customPop(this, 'to', '37489', '889', 'TO', '1');">to</span> <span class="word"
-                                                                                                     onclick="customPop(this, 'have', '36990', '390', 'HAVE', '1');">have</span>
+        class="word" onclick="customPop(this, 'to', '37489', '889', 'TO', '1');">to</span> <span class="word"
+                                                                                                 onclick="customPop(this, 'have', '36990', '390', 'HAVE', '1');">have</span>
     <span class="word" onclick="customPop(this, 'starved', '12830', '2809', 'STARVE', '3');">starved</span> <span
-            class="word" onclick="customPop(this, 'to', '37489', '889', 'TO', '1');">to</span> <span class="word"
-                                                                                                     onclick="customPop(this, 'death', '37851', '1251', 'DEATH', '2');">death</span>
+        class="word" onclick="customPop(this, 'to', '37489', '889', 'TO', '1');">to</span> <span class="word"
+                                                                                                 onclick="customPop(this, 'death', '37851', '1251', 'DEATH', '2');">death</span>
     <span class="word" onclick="customPop(this, 'in', '37026', '426', 'IN', '1');">in</span> <span class="word"
                                                                                                    onclick="customPop(this, 'one', '37190', '590', 'ONE', '1');">one</span>
     <span class="word" onclick="customPop(this, 'of', '37181', '581', 'OF', '1');">of</span> <span class="word"
                                                                                                    onclick="customPop(this, 'the', '37470', '870', 'THE', '1');">the</span>
     <span class="word" onclick="customPop(this, 'wealthiest', '16625', '3963', 'WEALTH', '4');">wealthiest</span> <span
-            class="word" onclick="customPop(this, 'cities', '746', '155', 'CITY', '1');">cities</span> <span
-            class="word" onclick="customPop(this, 'in', '37026', '426', 'IN', '1');">in</span> <span class="word"
-                                                                                                     onclick="customPop(this, 'Asia', '38641', '2041', 'ASIA', '3');">Asia</span>.
+        class="word" onclick="customPop(this, 'cities', '746', '155', 'CITY', '1');">cities</span> <span
+        class="word" onclick="customPop(this, 'in', '37026', '426', 'IN', '1');">in</span> <span class="word"
+                                                                                                 onclick="customPop(this, 'Asia', '38641', '2041', 'ASIA', '3');">Asia</span>.
     <span class="word" onclick="customPop(this, 'Their', '4795', '874', 'THEY', '1');">Their</span> <span class="word"
                                                                                                           onclick="customPop(this, 'bodies', '513', '103', 'BODY', '1');">bodies</span>
     <span class="word" onclick="customPop(this, 'lay', '37072', '472', 'LAY', '1');">lay</span> <span class="word"
@@ -165,10 +203,10 @@
     <span class="word" onclick="customPop(this, 'for', '36937', '337', 'FOR', '1');">for</span> <span class="word"
                                                                                                       onclick="customPop(this, 'two', '37515', '915', 'TWO', '1');">two</span>
     <span class="word" onclick="customPop(this, 'months', '2969', '542', 'MONTH', '1');">months</span> <span
-            class="word" onclick="customPop(this, 'until', '37525', '925', 'UNTIL', '1');">until</span> <span
-            class="word" onclick="customPop(this, 'someone', '4401', '797', 'SOME', '1');">someone</span> <span
-            class="word" onclick="customPop(this, 'came', '853', '172', 'COME', '1');">came</span> <span class="word"
-                                                                                                         onclick="customPop(this, 'to', '37489', '889', 'TO', '1');">to</span>
+        class="word" onclick="customPop(this, 'until', '37525', '925', 'UNTIL', '1');">until</span> <span
+        class="word" onclick="customPop(this, 'someone', '4401', '797', 'SOME', '1');">someone</span> <span
+        class="word" onclick="customPop(this, 'came', '853', '172', 'COME', '1');">came</span> <span class="word"
+                                                                                                     onclick="customPop(this, 'to', '37489', '889', 'TO', '1');">to</span>
     <span class="word" onclick="customPop(this, 'read', '37293', '693', 'READ', '1');">read</span> <span class="word"
                                                                                                          onclick="customPop(this, 'the', '37470', '870', 'THE', '1');">the</span>
     <span class="word" onclick="customPop(this, 'water', '37550', '950', 'WATER', '1');">water</span> <span class="word"
@@ -178,9 +216,9 @@
     <span class="word" onclick="customPop(this, 'a', '97', '0', 'SLARTIBARTFAST', '3');">a</span> <span class="word"
                                                                                                         onclick="customPop(this, 'bad', '36669', '69', 'BAD', '1');">bad</span>
     <span class="word" onclick="customPop(this, 'smell', '38449', '1849', 'SMELL', '2');">smell</span>.<br><br><span
-            class="word" onclick="customPop(this, 'Mother', '37146', '546', 'MOTHER', '1');">Mother</span> <span
-            class="word" onclick="customPop(this, 'and', '36638', '38', 'AND', '1');">and</span> <span class="word"
-                                                                                                       onclick="customPop(this, 'son', '37398', '798', 'SON', '1');">son</span>
+        class="word" onclick="customPop(this, 'Mother', '37146', '546', 'MOTHER', '1');">Mother</span> <span
+        class="word" onclick="customPop(this, 'and', '36638', '38', 'AND', '1');">and</span> <span class="word"
+                                                                                                   onclick="customPop(this, 'son', '37398', '798', 'SON', '1');">son</span>
     <span class="word" onclick="customPop(this, 'were', '367', '77', 'BE', '1');">were</span> <span class="word"
                                                                                                     onclick="customPop(this, 'found', '1762', '323', 'FIND', '1');">found</span>
     <span class="word" onclick="customPop(this, 'apart', '36642', '42', 'APART', '1');">apart</span> <span class="word"
@@ -194,7 +232,7 @@
     <span class="word" onclick="customPop(this, 'their', '4795', '874', 'THEY', '1');">their</span> <span class="word"
                                                                                                           onclick="customPop(this, 'tiny', '38530', '1930', 'TINY', '2');">tiny</span>
     <span class="word" onclick="customPop(this, 'rented', '8837', '1758', 'RENT', '2');">rented</span> <span
-            class="word" onclick="customPop(this, 'apartment', '38632', '2032', 'APARTMENT', '3');">apartment</span>
+        class="word" onclick="customPop(this, 'apartment', '38632', '2032', 'APARTMENT', '3');">apartment</span>
     <span class="word" onclick="customPop(this, 'was', '365', '77', 'BE', '1');">was</span> <span class="word"
                                                                                                   onclick="customPop(this, 'a', '97', '0', 'SLARTIBARTFAST', '3');">a</span>
     <span class="word" onclick="customPop(this, 'bag', '36670', '70', 'BAG', '1');">bag</span> <span class="word"
@@ -202,13 +240,44 @@
     <span class="word" onclick="customPop(this, 'red', '37305', '705', 'RED', '1');">red</span> <span class="word"
                                                                                                       onclick="customPop(this, 'pepper', '42225', '5625', 'PEPPER', '6');">pepper</span>
     <span class="word" onclick="customPop(this, 'chilli', '42760', '6160', 'CHILLI', '7');">chilli</span> <span
-            class="word" onclick="customPop(this, 'flakes', '14686', '3353', 'FLAKE', '4');">flakes</span>.
+        class="word" onclick="customPop(this, 'flakes', '14686', '3353', 'FLAKE', '4');">flakes</span>.
 </div>
 
 <br><br>
-<button onclick="prepArticles()">Prepare Articles</button>
-<br>
-<button onclick="restoreArticles()">Restore Articles</button>
+<button onclick="prepArticles();">Prepare Articles</button>
+
+<style>
+    #picker {
+        /*border: 2px solid black;*/
+        width: 160px;
+        text-align: center;
+        position: fixed;
+        top: 120px;
+        left: 30px;
+        display: none;
+    }
+
+    .opt:hover {
+        background-color: green;
+    }
+
+    .opt {
+        display: inline-block;
+        font-size: x-large;
+        font-weight: bolder;
+        width: 40px;
+        border: 1px solid black;
+        background-color: greenyellow;
+        border-radius: 3px;
+        cursor: pointer;
+    }
+</style>
+<div id="picker">
+    <span class="opt" id="the">the</span>
+    <span class="opt" id="a">a</span>
+    <span class="opt" id="an">an</span>
+</div>
+
 
 </body>
 </html>

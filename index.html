@@ -9,35 +9,47 @@
         }
     </style>
     <script type="text/javascript">
-        // function getPosition(el) {
-        //     var xPosition = 0;
-        //     var yPosition = 0;
-        //
-        //     while (el) {
-        //         if (el.tagName == "BODY") {
-        //             // deal with browser quirks with body/window/document and page scroll
-        //             var xScrollPos = el.scrollLeft || document.documentElement.scrollLeft;
-        //             var yScrollPos = el.scrollTop || document.documentElement.scrollTop;
-        //
-        //             xPosition += (el.offsetLeft - xScrollPos + el.clientLeft);
-        //             yPosition += (el.offsetTop - yScrollPos + el.clientTop);
-        //         } else {
-        //             xPosition += (el.offsetLeft - el.scrollLeft + el.clientLeft);
-        //             yPosition += (el.offsetTop - el.scrollTop + el.clientTop);
-        //         }
-        //
-        //         el = el.offsetParent;
-        //     }
-        //     console.log(xPosition + ", " + yPosition);
-        //     return {
-        //         x: xPosition,
-        //         y: yPosition
-        //     };
-        // }
+        function getPosition(el) {
+            var xPosition = 0;
+            var yPosition = 0;
+
+            while (el) {
+                if (el.tagName == "BODY") {
+                    // deal with browser quirks with body/window/document and page scroll
+                    var xScrollPos = el.scrollLeft || document.documentElement.scrollLeft;
+                    var yScrollPos = el.scrollTop || document.documentElement.scrollTop;
+
+                    xPosition += (el.offsetLeft - xScrollPos + el.clientLeft);
+                    yPosition += (el.offsetTop - yScrollPos + el.clientTop);
+                } else {
+                    xPosition += (el.offsetLeft - el.scrollLeft + el.clientLeft);
+                    yPosition += (el.offsetTop - el.scrollTop + el.clientTop);
+                }
+
+                el = el.offsetParent;
+            }
+            return {
+                x: xPosition,
+                y: yPosition
+            };
+        }
 
         var tries, articles, articleCount, spanText, elHidden;
 
         function customPop(a, b, c, d, e, f) {
+        }
+
+        function textAreaSize() {
+            const el = document.getElementById("terry");
+            const leftXY = getPosition(el);
+            const right = leftXY.x + window.getComputedStyle(el).width;
+            const bottom = leftXY.y + window.getComputedStyle(el).height;
+            return {
+                topleftX: leftXY.x,
+                topleftY: leftXY.y,
+                toprightX: right,
+                bottomrightY: bottom
+            }
         }
 
         function prepArticles() {
@@ -67,8 +79,14 @@
                     el.classList.add("article");
                     el.style.display = "none";
                     el.nextElementSibling.addEventListener("click", function (e) {
-                        console.log(e.clientX + ", " + e.clientY);
-                        picker.style.left = e.clientX - 80 + "px";
+                        console.log("position of terry: " + getPosition(document.getElementById("terry")).x + "," + getPosition(document.getElementById("terry")).y);
+                        console.log("position of mouse: " + e.clientX + ", " + e.clientY);
+                        console.log("overflow to left? " + e.clientX - 80 < getPosition(document.getElementById("terry")).x);
+                        console.log("e.clientX-80: " + (e.clientX - 80));
+                        console.log("terry x: " + getPosition(document.getElementById("terry")).x)
+                        const bob = textAreaSize();
+                        console.log(bob.topleftX + ", " + bob.topleftY + ", " + bob.toprightX + ", " + bob.bottomrightY);
+                        picker.style.left = (e.clientX - 80) > getPosition(document.getElementById("terry")).x ? ((e.clientX - 80) + "px") : (e.clientX + "px");
                         picker.style.top = e.clientY + 30 + "px";
                         picker.style.display = "block";
                         spanText = el.textContent;
@@ -247,6 +265,15 @@
 <button onclick="prepArticles();">Prepare Articles</button>
 
 <style>
+    #terry {
+        position: relative;
+        width: 70%;
+        border: 2px solid black;
+        border-radius: 4px;
+        margin: 0 auto;
+        padding: 15px;
+    }
+
     #picker {
         /*border: 2px solid black;*/
         width: 160px;

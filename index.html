@@ -9,6 +9,18 @@
         }
     </style>
     <script type="text/javascript">
+        var bob, hintCount;
+
+        function yummyToast(msg) {
+            let x = document.getElementById("toast");
+            x.innerText = msg;
+            x.style.left = Math.round(bob.topleftX + ((bob.bottomrightX - bob.topleftX) / 2) - (x.clientWidth / 2)) + "px";
+            x.className = "show";
+            setTimeout(function () {
+                x.className = x.className.replace("show", "");
+            }, 3000);
+        }
+
         function getPosition(el) {
             var xPosition = 0;
             var yPosition = 0;
@@ -40,67 +52,96 @@
         }
 
         function textAreaSize() {
-            const el = document.getElementById("terry");
-            const leftXY = getPosition(el);
-            const right = leftXY.x + window.getComputedStyle(el).width;
-            const bottom = leftXY.y + window.getComputedStyle(el).height;
+            let el = document.getElementById("terry");
+            let leftXY = getPosition(el);
+            let right = leftXY.x + el.clientWidth;
+            let bottom = leftXY.y + el.clientHeight;
             return {
                 topleftX: leftXY.x,
                 topleftY: leftXY.y,
-                toprightX: right,
+                bottomrightX: right,
                 bottomrightY: bottom
             }
         }
 
         function prepArticles() {
 
-            var picker = document.getElementById("picker");
-            var patt = /(\bthe\b|\ba\b|\ban\b)/i; //the modifer \b means 'word boundary'. So having one at the start and end of the regex means 'match whole word'
-            var dom = document.getElementById("terry").getElementsByTagName("span");
+            const picker = document.getElementById("picker");
+            const patt = /(\bthe\b|\ba\b|\ban\b)/i; //the modifer \b means 'word boundary'. So having one at the start and end of the regex means 'match whole word'
+            const dom = document.getElementById("terry").getElementsByTagName("span");
             tries = 0;
             articles = 0;
+            bob = textAreaSize();
+            hintCount = 0;
 
             function checky() {
-                ++tries;
                 if (new RegExp("\\b" + spanText + "\\b", "i").test("" + this.id)) {
                     elHidden.style.display = "inline";
                     document.getElementById("picker").style.display = "none";
                     --articleCount;
                     if (articleCount === 0) {
-                        window.alert("all done\nYour score is " + Math.round(100 * articles / tries) + "%");
+                        let msg = "all done\nYour score is " + Math.round(100 * articles / tries) + "%";
+                        msg = hintCount > 0 ? msg + "\nBut you used " + hintCount + " hints ㅠㅠ" : msg;
+                        yummyToast(msg);
                     }
                 }
             }
 
             [].forEach.call(dom, function (el) {
 
+                el.addEventListener("click", function () {
+                    ++tries;
+                });
+
                 if (patt.test(el.textContent)) {
                     articles++;
                     el.classList.add("article");
                     el.style.display = "none";
                     el.nextElementSibling.addEventListener("click", function (e) {
-                        console.log("position of terry: " + getPosition(document.getElementById("terry")).x + "," + getPosition(document.getElementById("terry")).y);
-                        console.log("position of mouse: " + e.clientX + ", " + e.clientY);
-                        console.log("overflow to left? " + e.clientX - 80 < getPosition(document.getElementById("terry")).x);
-                        console.log("e.clientX-80: " + (e.clientX - 80));
-                        console.log("terry x: " + getPosition(document.getElementById("terry")).x)
-                        const bob = textAreaSize();
-                        console.log(bob.topleftX + ", " + bob.topleftY + ", " + bob.toprightX + ", " + bob.bottomrightY);
-                        picker.style.left = (e.clientX - 80) > getPosition(document.getElementById("terry")).x ? ((e.clientX - 80) + "px") : (e.clientX + "px");
-                        picker.style.top = e.clientY + 30 + "px";
+                        // Setting picker x
+                        picker.style.left = (e.clientX - 80) + "px";
+                        if ((e.clientX - 80) < bob.topleftX) picker.style.left = e.clientX + "px";
+                        if ((e.clientX + 80) > bob.bottomrightX) picker.style.left = (e.clientX - 160) + "px";
+                        // Setting picker y
+                        picker.style.top = (e.clientY + 50) > bob.bottomrightY ? (e.clientY - 50) + "px" : (e.clientY + 30) + "px";
+
                         picker.style.display = "block";
                         spanText = el.textContent;
                         document.getElementById("the").addEventListener("click", checky);
                         document.getElementById("a").addEventListener("click", checky);
                         document.getElementById("an").addEventListener("click", checky);
-                        elHidden = el;
+                        elHidden = el; // global var
                     });
                 }
             });
-            window.alert("There are " + articles + " articles in this text.");
+            yummyToast("There are " + articles + " articles in this text.");
             articleCount = articles;
         }
 
+        function showHint() {
+            ++hintCount;
+            let oldFontWeight, oldColor;
+            const dom = document.getElementById("terry").getElementsByTagName("span");
+            [].forEach.call(dom, function (el) {
+                if (el.style.display === "none") {
+                    oldFontWeight = el.style.fontWeight;
+                    oldColor = el.style.color;
+                    el.style.display = "inline";
+                    el.style.fontWeight = "bolder";
+                    el.style.color = "red";
+                }
+            });
+            setTimeout(function () {
+                [].forEach.call(dom, function (el) {
+                    if (el.style.color === "red") {
+                        el.style.color = oldColor;
+                        el.style.fontWeight = oldFontWeight;
+                        el.style.display = "none";
+                    }
+                });
+            }, 2000);
+
+        }
     </script>
 </head>
 <body>
@@ -262,8 +303,9 @@
 </div>
 
 <br><br>
-<button onclick="prepArticles();">Prepare Articles</button>
-
+<button onclick="prepArticles(); document.getElementById('btnHint').style.display = 'block';">Prepare Articles</button>
+<button id="btnHint" onclick="showHint();" style="display: none;">Show Hint</button>
+<div id="toast"></div>
 <style>
     #terry {
         position: relative;
@@ -297,6 +339,72 @@
         background-color: greenyellow;
         border-radius: 3px;
         cursor: pointer;
+    }
+
+    #toast {
+        box-shadow: 20px 20px 50px 20px #fff, -20px -20px 50px 20px #fff, 20px -20px 50px 20px #fff, -20px 20px 50px 20px #fff;
+        visibility: hidden;
+        min-width: 250px;
+        background-color: #333;
+        text-align: center;
+        border-radius: 2px;
+        padding: 16px;
+        position: fixed;
+        z-index: 1;
+        top: 30px;
+        font-size: 32px;
+        font-family: "Times New Roman", serif;
+        color: cornsilk;
+    }
+
+    #toast.show {
+        visibility: visible;
+        -webkit-animation: fadein 0.5s, fadeout 0.5s 2.5s;
+        animation: fadein 0.5s, fadeout 0.5s 2.5s;
+    }
+
+    @-webkit-keyframes fadein {
+        from {
+            top: 0;
+            opacity: 0;
+        }
+        to {
+            top: 30px;
+            opacity: 1;
+        }
+    }
+
+    @keyframes fadein {
+        from {
+            top: 0;
+            opacity: 0;
+        }
+        to {
+            top: 30px;
+            opacity: 1;
+        }
+    }
+
+    @-webkit-keyframes fadeout {
+        from {
+            top: 30px;
+            opacity: 1;
+        }
+        to {
+            top: 0;
+            opacity: 0;
+        }
+    }
+
+    @keyframes fadeout {
+        from {
+            top: 30px;
+            opacity: 1;
+        }
+        to {
+            top: 0;
+            opacity: 0;
+        }
     }
 </style>
 <div id="picker">

@@ -108,6 +108,7 @@ function prepArticles() {
                 let msg = "all done\nYour score is " + Math.round(100 * articles / tries) + "%";
                 msg = hintCount > 0 ? msg + "\nBut you used " + hintCount + (hintCount === 1 ? " hint" : " hints ㅠㅠ") : msg;
                 yummyToast(msg);
+                // document.getElementById("terry").setAttribute("contenteditable", "true");
             }
         } else {
             tries += 1;
@@ -145,6 +146,9 @@ function prepArticles() {
     articleCount = articles;
     document.getElementById("btnHint").style.display = "inline-block";
     document.getElementById("instructions").style.display = "inline";
+    document.getElementById("terry").blur();
+    document.getElementById("terry").setAttribute("contenteditable", "false");
+    document.getElementById("terry").setAttribute("readonly", "readonly");
 }
 
 function showHint() {

@@ -57,7 +57,11 @@ function textAreaSize() {
 function spanTerry() {
     const text = document.getElementById("terry").innerText;
     console.log("innerText: " + text);
-    let TextArr = text.split(/[\r\n ]/g);
+    // let TextArr = text.split(/[\r\n ]/g);
+    let TextArr = text.split(/[\s]/g);
+    // let TextArr = text.split(/[\b]/g);
+    // let TextArr = text.split(/[\r\n ]/g);
+    // let TextArr = text.split(/[\r\n ]/g);
     console.log(TextArr.length);
     for (let i = 0; i < TextArr.length; i++) {
         if (TextArr[i].length > 0) {
@@ -78,7 +82,7 @@ function pastey(e) {
     const clipboardData = e.clipboardData || window.clipboardData;
     const dataToPaste = clipboardData.getData("text/plain");
     console.log("\n\ndataToPaste: " + dataToPaste + "\n\n");
-    let el=document.getElementById("terry");
+    let el = document.getElementById("terry");
     // el.setAttribute("pasted", null);
     // el.removeChild(el.firstChild);
     // el.textContent = "";
@@ -100,6 +104,7 @@ function prepArticles() {
     articleCount = 0;
 
     function checky() {
+        spanText = spanText.replace(/[^\w]/, "");
         if (new RegExp("\\b" + spanText + "\\b", "i").test("" + this.id)) {
             elHidden.style.display = "inline";
             document.getElementById("picker").style.display = "none";
@@ -108,7 +113,6 @@ function prepArticles() {
                 let msg = "all done\nYour score is " + Math.round(100 * articles / tries) + "%";
                 msg = hintCount > 0 ? msg + "\nBut you used " + hintCount + (hintCount === 1 ? " hint" : " hints ㅠㅠ") : msg;
                 yummyToast(msg);
-                // document.getElementById("terry").setAttribute("contenteditable", "true");
             }
         } else {
             tries += 1;

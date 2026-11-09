@@ -1,0 +1,249 @@
+=== hard-short-01 | The Placebo Effect
+The placebo effect is one of the most puzzling phenomena in medicine. When patients are given a sugar pill that they believe to be a genuine treatment, a surprising number report an improvement in their symptoms. More remarkably, some studies suggest that the effect can persist even when patients are told that the pill contains no active ingredient. The expectation of relief, it seems, can be a powerful medicine in itself.
+
+=== hard-short-02 | The Paradox of Choice
+It seems logical that having more options should make us happier. However, a number of psychologists argue that an abundance of choice can be paralysing. Faced with dozens of almost identical products on a supermarket shelf, a shopper may struggle to decide, or may leave without buying anything at all. Even after making a choice, people often feel a nagging suspicion that a better alternative was available.
+
+=== hard-short-03 | Urban Heat Islands
+On a summer afternoon, the centre of a large city can be several degrees warmer than the surrounding countryside. This phenomenon, known as the urban heat island effect, occurs because asphalt and concrete absorb heat during the day and release it slowly at night. The lack of vegetation makes the problem worse, as trees provide shade and cool the air through the evaporation of water from their leaves.
+
+=== hard-short-04 | The Last Speaker
+When the last fluent speaker of a language dies, a unique way of understanding the world disappears with them. Linguists estimate that a significant proportion of the world's languages are endangered, many of them spoken only by a handful of elderly people. A language is not merely a set of words; it is a store of knowledge about local plants, history, and relationships that often cannot be translated precisely.
+
+=== hard-short-05 | The Dunning-Kruger Effect
+The Dunning-Kruger effect describes a cognitive bias in which people with limited knowledge of a subject tend to overestimate their own competence. The irony is that the skills needed to perform a task well are often the same skills needed to recognise a good performance. Consequently, a beginner may be blissfully unaware of their mistakes, while an expert is acutely conscious of how much they still have to learn.
+
+=== hard-short-06 | Sourdough
+Long before the invention of commercial yeast, bakers relied on a living culture known as a sourdough starter. The starter is simply a mixture of flour and water, colonised by wild yeasts and bacteria from the environment. Bakers feed it regularly, and some starters have reportedly been kept alive for over a century. The bacteria produce acids that give the bread its characteristic tangy flavour and help it to stay fresh for longer.
+
+=== hard-short-07 | The Overview Effect
+Many astronauts describe a profound shift in perspective after seeing the Earth from space. The planet appears as a fragile blue sphere suspended in darkness, with no visible borders between nations. This experience, which a writer named the overview effect, has led some astronauts to become passionate advocates for environmental protection and international cooperation, convinced that humanity shares a single, vulnerable home.
+
+=== hard-short-08 | A Forgotten Inventor
+History tends to remember the person who popularised an invention rather than the one who first conceived it. In many cases, an idea emerged in several places at roughly the same time, and the credit went to whoever secured a patent or attracted the attention of the press. The story of an invention is therefore rarely the story of a lone genius, but rather of a gradual, collective process.
+
+=== hard-short-09 | Microplastics
+Microplastics are fragments of plastic smaller than five millimetres. They are produced when larger items break down, but they also come from synthetic clothing, car tyres, and some cosmetics. Researchers have detected them in the deepest ocean trenches, in Arctic snow, and in the human bloodstream. The long-term effects on health remain unclear, which has prompted calls for a more cautious approach to plastic production.
+
+=== hard-short-10 | Why We Procrastinate
+Procrastination is often dismissed as a sign of laziness or poor time management. Psychologists, however, increasingly regard it as an emotional problem rather than a practical one. People tend to postpone a task not because they lack the time, but because the task provokes an unpleasant feeling, such as boredom, anxiety, or a fear of failure. Avoiding it brings temporary relief, which unfortunately reinforces the habit.
+
+=== hard-medium-01 | The Ethics of Self-Driving Cars
+As self-driving cars move closer to becoming an everyday reality, engineers face a question that was once confined to philosophy classrooms. If an accident is unavoidable, how should the car decide whom to protect?
+
+The dilemma resembles a famous thought experiment known as the trolley problem, in which a person must choose whether to divert a runaway train so that it kills one person instead of five. In the case of an autonomous vehicle, the decision would not be made in a moment of panic, but programmed in advance by a team of developers.
+
+Surveys conducted across many countries have revealed that people's intuitions vary considerably. Most respondents believe that a car should minimise the total number of casualties, yet many also admit that they would be reluctant to buy a car that might sacrifice its own passengers.
+
+Some experts argue that the debate is a distraction. Since the vast majority of road accidents are caused by human error, they contend, the overriding priority should be to make autonomous vehicles as safe as possible, rather than to solve every hypothetical scenario.
+
+=== hard-medium-02 | The Invention of Time Zones
+Until the nineteenth century, most towns set their clocks according to the position of the sun. Noon was simply the moment when the sun was highest in the sky, which meant that a town a short distance to the west would be several minutes behind its neighbour. For most of human history, this caused little inconvenience.
+
+The arrival of the railway changed everything. A train travelling across a country would pass through dozens of local times, making it almost impossible to publish a coherent timetable. Railway companies began to adopt a standard time along their lines, and confusion arose wherever different companies used different clocks.
+
+In 1884, delegates from around the world gathered in Washington for a conference that established the meridian passing through Greenwich, in London, as the starting point for measuring longitude. This paved the way for a global system of time zones, each roughly fifteen degrees wide.
+
+Even today, however, time zones are as much a political matter as a geographical one. Some countries span an enormous distance yet observe a single time, while others have adopted offsets of half an hour or even forty-five minutes.
+
+=== hard-medium-03 | The Science of Expertise
+It is often claimed that it takes ten thousand hours of practice to master a skill. The figure became popular after it appeared in a bestselling book, which drew on research into the training habits of elite violinists. The idea is appealing because it suggests that excellence is within the reach of anyone who is willing to work hard enough.
+
+The researchers behind the original study, however, have since pointed out that the number was never intended as a fixed rule. The amount of practice required varies enormously from one field to another, and from one individual to the next.
+
+More importantly, they emphasised that the type of practice matters far more than the quantity. What they called deliberate practice involves working at the edge of one's ability, receiving immediate feedback, and focusing on specific weaknesses. Simply repeating a task that one can already perform comfortably produces little improvement, no matter how many hours are spent on it.
+
+This distinction helps to explain why many people who have driven a car for decades are not noticeably better drivers than they were after their first year. Experience, in other words, is not the same as expertise.
+
+=== hard-medium-04 | The Rosetta Stone
+In 1799, soldiers in Napoleon's army discovered a slab of dark stone near the town of Rashid, known to Europeans as Rosetta, in the Nile Delta. The stone was inscribed with the same decree written in three different scripts: Egyptian hieroglyphs, a cursive Egyptian script known as Demotic, and ancient Greek.
+
+At the time, nobody had been able to read hieroglyphs for well over a thousand years. Because scholars could understand the Greek text, the stone offered a unique opportunity to unlock the meaning of the other two scripts.
+
+The breakthrough came gradually. An English scholar, Thomas Young, made important early progress, recognising that certain groups of symbols enclosed in an oval represented the names of royalty. However, it was the French linguist Jean-François Champollion who, in 1822, demonstrated that hieroglyphs combined phonetic signs with symbols representing whole words or ideas. His knowledge of Coptic, a late form of the Egyptian language, proved crucial.
+
+The decipherment opened up thousands of years of Egyptian history to modern readers. Today, the stone is displayed in the British Museum, although its location remains a subject of debate, and there have been calls for it to be returned to Egypt.
+
+=== hard-medium-05 | Behavioural Nudges
+Governments have traditionally tried to influence behaviour through laws, taxes, and information campaigns. In recent decades, however, many have turned to a subtler approach known as nudging. A nudge is a small change in the way choices are presented that makes a desirable option more likely, without forbidding any alternative.
+
+A frequently cited example concerns pension savings. When employees must actively sign up for a retirement scheme, a large proportion never get around to doing so. When enrolment is automatic and employees must opt out if they do not wish to participate, participation rates rise dramatically, even though the choice available is exactly the same.
+
+Other nudges include placing fruit at eye level in a school canteen or sending a letter informing people that most of their neighbours have already paid their taxes.
+
+Critics have raised concerns about the approach. Some argue that nudges are a form of manipulation, steering people's decisions without their full awareness. Others question whether a policy that relies on minor psychological tricks can tackle complex social problems. Supporters respond that every choice is presented in some way, so the real question is not whether to influence people, but how to do so responsibly.
+
+=== hard-medium-06 | The Hidden Cost of Free Apps
+Most of the applications on a typical smartphone cost nothing to download. Social networks, search engines, and many games are offered free of charge to billions of users. Yet the companies behind them are among the most valuable in the world. How is this possible?
+
+The answer lies in data. As we scroll, search, and click, these platforms collect a detailed record of our behaviour: what we read, where we go, whom we communicate with, and how long we look at a particular image. This information allows advertisers to target an audience with remarkable precision, and they are prepared to pay a considerable premium for it.
+
+The arrangement has been summarised in a well-known phrase: if you are not paying for the product, you are the product. Although this is perhaps an oversimplification, it captures an important truth about the digital economy.
+
+In response to growing concerns about privacy, several governments have introduced legislation requiring companies to explain how they use personal data and to obtain the consent of users. Critics argue, however, that few people actually read the lengthy terms and conditions they agree to, which makes the notion of informed consent somewhat questionable.
+
+=== hard-medium-07 | The Rise and Fall of the Dodo
+The dodo was a large, flightless bird that lived on the island of Mauritius in the Indian Ocean. Having evolved in the absence of predators, it had no reason to fear humans when Dutch sailors arrived at the end of the sixteenth century. Within less than a century, the species had vanished entirely.
+
+For a long time, the dodo was portrayed as a clumsy, foolish creature that was somehow destined for extinction. Recent research has challenged this image. Analysis of skeletons suggests that the bird was more agile than previously believed, and that the overweight figures depicted in many early paintings may have been based on overfed captive specimens.
+
+Hunting by sailors was only part of the story. The animals that humans brought to the island, including pigs, rats, and monkeys, probably did even greater damage by destroying nests and eating eggs. The destruction of the forest habitat also played a role.
+
+Today, the phrase "as dead as a dodo" is used to describe something that is completely obsolete. The bird has also become a powerful symbol of the impact that humans can have on fragile ecosystems, and a reminder of how quickly a species can be lost.
+
+=== hard-medium-08 | Translation and Untranslatable Words
+Every language contains words that seem to resist translation. Korean, for example, has the word "jeong," which refers to a deep sense of attachment and affection that develops over time between people, or even between a person and a place. English has no single equivalent, and a translator must choose between an awkward explanation and an approximation that loses much of the nuance.
+
+Such words are often presented as evidence that speakers of different languages think in fundamentally different ways. The reality is more complicated. The absence of a single word does not mean that a concept is unknown; English speakers can certainly experience the feeling that "jeong" describes, even if they need a whole sentence to express it.
+
+Nevertheless, the vocabulary of a language does reveal something about the priorities of a culture. A concept that is important enough to deserve its own word is likely to be discussed frequently and to shape the way people interpret their experiences.
+
+For translators, the challenge is not simply to find matching words, but to convey the meaning, tone, and cultural associations of the original text. It is an art as much as a science, and a skilled translator is in many ways a co-author of the work.
+
+=== hard-medium-09 | The Psychology of Queues
+Waiting in a queue is one of the most universally disliked experiences of modern life. Interestingly, research suggests that our frustration often depends less on the actual length of the wait than on how the wait is perceived.
+
+One well-known principle is that unoccupied time feels longer than occupied time. This is why many hotels place a mirror beside the lifts and why some airports deliberately make the walk to the baggage area longer: passengers who are walking feel that they are making progress, whereas those standing at an empty carousel grow impatient.
+
+Uncertainty also makes waiting more stressful. A display that tells customers how many minutes remain can significantly reduce anxiety, even if it does not shorten the wait at all. Similarly, people are far more tolerant of a delay when they are given an explanation for it.
+
+Perhaps most importantly, people care deeply about fairness. A single line that serves customers in order of arrival is often preferred to several parallel lines, even when the average wait is identical, because nobody has to suffer the indignity of watching a neighbouring queue move faster.
+
+=== hard-medium-10 | The Secret Life of Fungi
+When we think of fungi, we usually picture a mushroom. Yet the mushroom is merely the fruiting body of an organism that lives largely out of sight. Beneath the surface of the soil, most fungi consist of a vast network of microscopic threads called hyphae, which can extend over an enormous area.
+
+Many of these networks form a partnership with the roots of plants. The fungus supplies the plant with water and minerals that it has extracted from the soil, and in return, the plant provides the fungus with sugars produced through photosynthesis. The vast majority of plant species are thought to depend on such relationships.
+
+Some researchers have suggested that these networks also allow trees to exchange resources and even chemical signals, a concept popularly described as the "wood wide web." The idea has captured the public imagination, although other scientists caution that the evidence for widespread cooperation between trees remains limited and that the metaphor may be overstated.
+
+What is beyond dispute is that fungi are essential to life on land. By breaking down dead material, they recycle nutrients and keep ecosystems functioning. Without them, the forest floor would soon be buried under a thick layer of fallen leaves and wood.
+
+=== hard-long-01 | The Attention Economy
+In an age of information abundance, the scarcest resource is no longer knowledge but attention. This insight, first articulated by economists several decades ago, has become the foundation of what is now called the attention economy. Technology companies compete not primarily for our money, but for our time, since the longer we remain on a platform, the more advertisements we see and the more data we generate.
+
+To capture and hold our attention, designers employ a range of techniques drawn from behavioural psychology. The infinite scroll removes the natural stopping point that a page or a chapter once provided. Notifications arrive at unpredictable intervals, exploiting the same mechanism of variable reward that makes slot machines so compelling. Even the colour of an alert badge is chosen to trigger a sense of urgency.
+
+The consequences of this competition are a subject of intense debate. Some researchers have linked heavy use of social media to anxiety, poor sleep, and difficulty concentrating, particularly among adolescents. Others caution that the evidence is mixed and that correlation should not be mistaken for causation; it may be that people who are already unhappy are more likely to spend long hours online.
+
+What is less disputed is that the business model creates a conflict of interest. A platform that profits from engagement has little incentive to encourage users to log off, even when doing so would be in their best interest. Content that provokes outrage or fear tends to spread faster than calm, balanced information, and algorithms designed to maximise engagement may therefore amplify divisive material.
+
+In response, a growing movement advocates what is sometimes called humane technology. Its supporters argue that devices and apps should be designed to respect users' time and well-being rather than to exploit their vulnerabilities. Some practical suggestions include turning off non-essential notifications, setting the screen to greyscale, and keeping phones out of the bedroom.
+
+Ultimately, the question is not whether technology is good or bad, but who controls it. If we do not decide how to spend our attention, someone else will happily decide for us.
+
+=== hard-long-02 | The Discovery of Penicillin
+The story of penicillin is often told as a tale of happy accident. In 1928, the Scottish scientist Alexander Fleming returned to his laboratory in London after a holiday and noticed that a mould had contaminated one of his dishes of bacteria. Around the mould was a clear zone where the bacteria had been destroyed. Fleming identified the mould as a species of Penicillium and named the active substance penicillin.
+
+Yet the popular version of the story leaves out a great deal. Fleming published his findings, but he struggled to purify the substance or produce it in useful quantities, and for about a decade his discovery attracted relatively little attention. Many scientists doubted that it could survive long enough in the human body to be effective.
+
+The real transformation began at the end of the 1930s, when a team at the University of Oxford, led by Howard Florey and Ernst Chain, took up the research. Working with very limited resources, they developed methods to extract and purify penicillin. One member of the team, Norman Heatley, devised an ingenious system for producing the mould in large containers, including bedpans adapted for the purpose.
+
+In 1941, the team treated their first human patient, a police officer who was suffering from a severe infection. He improved dramatically, but the supply of penicillin ran out before he could be cured, and he eventually died. The case nevertheless demonstrated the drug's extraordinary potential.
+
+With Britain at war, large-scale production moved to the United States, where researchers discovered a more productive strain of the mould on a rotting melon bought at a market. By the end of the Second World War, penicillin was being manufactured in vast quantities and had saved countless lives.
+
+In 1945, Fleming, Florey, and Chain shared the Nobel Prize in Physiology or Medicine. Fleming himself warned in his acceptance lecture that the misuse of penicillin could lead to resistant bacteria, a prediction that has proved alarmingly accurate. Today, antibiotic resistance is regarded as one of the most serious threats to global health.
+
+=== hard-long-03 | The Case for Boredom
+Boredom has a poor reputation. It is generally regarded as an unpleasant state to be avoided at all costs, and modern technology has made it easier than ever to do so. At the first hint of tedium, whether in a queue, on a train, or during an advertisement break, most of us instinctively reach for a phone. Yet a growing body of research suggests that we may be depriving ourselves of something valuable.
+
+Psychologists define boredom as the uncomfortable feeling of wanting to engage in a satisfying activity but being unable to do so. Crucially, it functions as a signal. Much like hunger tells us that we need food, boredom tells us that our current situation is not meeting our needs, and it motivates us to seek something more meaningful.
+
+Several studies have explored the link between boredom and creativity. In one well-known experiment, participants who first completed a deliberately dull task, such as copying numbers from a telephone directory, subsequently came up with more creative ideas in a problem-solving exercise than those who had not. One explanation is that boredom encourages the mind to wander, and mind-wandering allows us to make unexpected connections between ideas.
+
+There is also evidence that the brain does important work when it is not focused on an external task. A network of brain regions becomes particularly active when we daydream, reflect on the past, or imagine the future. This activity appears to play a role in planning, in understanding other people, and in forming a coherent sense of who we are.
+
+This does not mean that all boredom is beneficial. Chronic boredom, particularly at work or school, has been associated with poor performance, risky behaviour, and low mood. The key distinction seems to be between boredom that prompts us to search for meaning and boredom that leaves us feeling trapped and helpless.
+
+The challenge in the modern world is that we rarely allow boredom to run its course. By filling every idle moment with a stream of digital stimulation, we may silence the signal before it has a chance to lead us anywhere interesting. The next time you are waiting for a bus, it might be worth leaving the phone in your pocket and seeing where your thoughts take you.
+
+=== hard-long-04 | The Great Stink of 1858
+In the middle of the nineteenth century, London was the largest and wealthiest city in the world, yet its sanitation was primitive. Human waste from a population of more than two million people flowed, largely untreated, into the River Thames, which was also a major source of drinking water. The newly popular flush toilet, ironically, had made the situation worse by sending even more sewage into the river.
+
+Several devastating outbreaks of cholera swept through the city during this period, killing tens of thousands of people. At the time, the dominant theory held that diseases such as cholera were spread by a foul-smelling "miasma," or bad air. A physician named John Snow challenged this view. By carefully mapping the cases of cholera during an outbreak in Soho in 1854, he traced the source to a single contaminated water pump on Broad Street. His argument that the disease was carried by water rather than air was not widely accepted at first.
+
+The turning point came in the unusually hot summer of 1858. The heat intensified the smell from the river to such an extent that the period became known as the Great Stink. The Houses of Parliament, located on the bank of the Thames, were directly affected. Curtains soaked in chemicals were hung in an attempt to block the odour, and some politicians considered moving elsewhere.
+
+Faced with an unbearable smell under their own windows, members of Parliament acted with remarkable speed. Within weeks, they passed legislation to fund a new sewer system designed by the engineer Joseph Bazalgette. His ambitious plan involved building enormous tunnels that intercepted the waste before it reached the river and carried it far downstream, to the east of the city.
+
+The project took many years to complete and required hundreds of millions of bricks. Bazalgette was famously cautious, making the pipes considerably wider than his calculations required, in anticipation of future growth. This foresight allowed the system to serve the city for well over a century.
+
+The irony of the story is that the sewers were built to remove a smell, not to stop a disease. Nevertheless, by removing sewage from the drinking water, they helped to bring an end to cholera epidemics in London, providing powerful, if accidental, support for John Snow's theory.
+
+=== hard-long-05 | The Language of Bees
+In the early twentieth century, the Austrian scientist Karl von Frisch noticed something remarkable about honeybees. When a forager discovered a rich source of food, other bees from the same hive would soon arrive at the location, even if it was far away and hidden from view. Somehow, the first bee was able to tell the others where to go.
+
+Through decades of patient experiments, von Frisch discovered that bees communicate by means of a dance. When a forager returns to the hive, she performs a series of movements on the vertical surface of the honeycomb, watched closely by her sisters. If the food is nearby, she performs a simple round dance, which tells the others to search in the immediate area.
+
+If the food is farther away, she performs what is called the waggle dance. The bee runs in a straight line while vigorously shaking her abdomen, then circles back to the starting point and repeats the movement. The angle of the straight run relative to the vertical indicates the direction of the food relative to the sun. The duration of the waggle phase indicates the distance: the longer the waggle, the farther away the food.
+
+What makes this system so extraordinary is its abstract nature. The bees are translating a direction in the horizontal world outside into an angle on a vertical surface inside the dark hive, using gravity as a reference. They even appear to compensate for the movement of the sun across the sky during the day.
+
+Von Frisch's conclusions were initially met with scepticism. Some researchers argued that bees found food simply by following its smell. It was only many years later that experiments using robotic bees and radar tracking confirmed that the dance really does convey information about location.
+
+In 1973, von Frisch shared the Nobel Prize in Physiology or Medicine with two other pioneers of the study of animal behaviour. His work transformed our understanding of insects, demonstrating that even creatures with a tiny brain are capable of a sophisticated form of symbolic communication.
+
+=== hard-long-06 | The Myth of Multitasking
+Many people pride themselves on their ability to multitask, and job advertisements frequently list it as a desirable skill. We answer emails during meetings, check messages while watching television, and listen to podcasts while cooking. Yet research in cognitive psychology suggests that what we call multitasking is, in most cases, something quite different.
+
+When it comes to tasks that require conscious attention, the human brain is largely incapable of doing two things at once. Instead, it switches rapidly between them. Each switch carries a cost: the brain must disengage from one set of rules and goals and load another, a process that takes time and mental effort. Although each individual switch may last only a fraction of a second, the costs accumulate. Some studies have suggested that frequent task switching can reduce productivity substantially compared with focusing on a single task.
+
+The errors also multiply. When attention is divided, we are more likely to overlook important details and make mistakes. This is why using a mobile phone while driving is so dangerous, even with a hands-free device. The problem lies not in the hands but in the mind, which cannot give its full attention to the road and the conversation simultaneously.
+
+Interestingly, people who multitask frequently do not necessarily become better at it. In a widely cited study, heavy media multitaskers performed worse than light multitaskers on several tests of attention and memory, apparently because they found it harder to filter out irrelevant information.
+
+There are, of course, exceptions. When one of the tasks is highly automatic, such as walking or folding laundry, it can be combined with a more demanding activity without much loss. The difficulty arises when both tasks require deliberate thought.
+
+The practical implications are clear. Rather than attempting to do everything at once, we are likely to achieve more by working in focused blocks of time, closing unnecessary tabs, and silencing notifications. It may feel slower, but in the end, doing one thing at a time is usually the faster route to getting everything done.
+
+=== hard-long-07 | The Printing Press and Its Ancestors
+The invention of the printing press is frequently cited as one of the most significant turning points in human history. Around the middle of the fifteenth century, Johannes Gutenberg, a goldsmith in the German city of Mainz, developed a system that combined movable metal type, an oil-based ink, and a press adapted from those used to make wine. The result was a method of reproducing texts far more quickly and cheaply than copying them by hand.
+
+The consequences were profound. Within a few decades, printing workshops had spread to cities across Europe, and millions of books were in circulation. The wider availability of texts is often credited with accelerating the spread of the Renaissance, enabling the rapid dissemination of the ideas of the Reformation, and laying the groundwork for the Scientific Revolution.
+
+However, the European narrative overlooks a long history of printing in East Asia. Woodblock printing was used in China for centuries before Gutenberg. Movable type made of baked clay was invented in China in the eleventh century by a craftsman named Bi Sheng.
+
+Korea occupies a particularly important place in this history. Korean printers developed movable metal type well before Gutenberg's press. The oldest surviving book printed with movable metal type, known as the Jikji, was produced at a Buddhist temple in 1377. A copy is held today in the National Library of France, and it has been recognised by UNESCO as part of the Memory of the World.
+
+Why, then, did printing with movable type not transform East Asian societies in the same dramatic way? One frequently proposed explanation lies in the writing systems themselves. Chinese requires thousands of distinct characters, making the production and arrangement of type an enormous undertaking. A European alphabet, by contrast, needed only a few dozen letters. Historians also point to differences in economic structure and in the role of the state, which in Korea often controlled printing for official purposes.
+
+The story of printing is therefore not a tale of a single inventor, but of parallel innovations in different parts of the world, shaped by the languages, economies, and political systems in which they arose.
+
+=== hard-long-08 | Rewilding
+For much of the twentieth century, conservation focused on protecting what remained: fencing off nature reserves and preserving endangered species in small, isolated pockets of habitat. In recent decades, however, a more ambitious approach has gained popularity. Known as rewilding, it aims not merely to preserve nature but to restore it on a large scale, allowing natural processes to reshape the landscape with minimal human intervention.
+
+A central idea of rewilding is the importance of keystone species, animals that have a disproportionate influence on their environment. The reintroduction of wolves to Yellowstone National Park in the United States in 1995 is often cited as a dramatic example. According to the popular account, the presence of wolves changed the behaviour of the elk, which began to avoid certain valleys. As a result, trees and shrubs along the riverbanks recovered, providing habitat for birds and beavers and even stabilising the banks of the rivers.
+
+Scientists have since cautioned that this story may be somewhat simplified, and that factors such as hunting by humans, climate, and other predators also played a role. Nevertheless, the case illustrates how the removal or return of a single species can trigger a chain of effects throughout an ecosystem.
+
+In Europe, rewilding projects have reintroduced animals such as beavers and bison. Beavers are particularly valued because their dams create wetlands that store water, reduce the risk of flooding downstream, and provide a home for a wide variety of other species.
+
+Rewilding is not without controversy. Farmers sometimes fear that predators will attack their livestock, and some rural communities feel that decisions about their land are being made by distant urban environmentalists. There are also questions about what the "natural" state of a landscape actually is, given that humans have been shaping the environment for thousands of years.
+
+Proponents argue that these challenges can be addressed through compensation schemes, careful planning, and genuine consultation with local people. They also point out that rewilding can bring economic benefits through tourism. As the world faces both a biodiversity crisis and a climate crisis, many believe that giving nature the space to heal itself may be one of the most effective tools available.
+
+=== hard-long-09 | The Marshmallow Test Revisited
+In the late 1960s and early 1970s, the psychologist Walter Mischel conducted a series of experiments at a nursery school at Stanford University that would become some of the most famous in the history of psychology. A young child was seated at a table and offered a treat, such as a marshmallow. The researcher explained that the child could eat the treat immediately, or wait alone in the room for several minutes and receive two treats instead.
+
+The children employed a variety of strategies to resist temptation. Some covered their eyes, others sang to themselves, and a few simply licked the marshmallow and put it back. Some ate it as soon as the researcher left the room.
+
+The experiment became famous because of what happened years later. When the researchers followed up with some of the original participants as teenagers, they found that the children who had waited longer tended to have higher exam scores and were described by their parents as more competent. The study was widely interpreted as evidence that self-control in early childhood predicts success in later life, and it inspired numerous programmes designed to teach children to delay gratification.
+
+More recent research, however, has complicated this picture. A large study published in 2018 attempted to replicate the findings with a much bigger and more diverse group of children. It found that the link between waiting and later achievement was considerably weaker than originally reported, and that much of it could be explained by factors such as the family's income and the mother's level of education.
+
+Other researchers have pointed out that a child's decision to wait may depend on whether they trust the adult to keep the promise. In one experiment, children who had previously experienced an unreliable researcher waited for a much shorter time. For a child growing up in an environment where resources are uncertain, eating the marshmallow immediately may be a perfectly rational choice.
+
+The revised interpretation does not mean that self-control is unimportant. Rather, it suggests that a child's behaviour cannot be understood in isolation from their circumstances. The story of the marshmallow test is also a valuable lesson about science itself: even the most celebrated findings should be re-examined as new evidence emerges.
+
+=== hard-long-10 | The Economics of Tipping
+In some countries, tipping is an essential part of the economy; in others, it is considered unnecessary or even insulting. In the United States, for example, customers are generally expected to leave a tip of somewhere between fifteen and twenty percent in a restaurant, and many waiting staff depend on these tips for a substantial part of their income. In Japan and Korea, by contrast, leaving extra money on the table may cause confusion, and a waiter might even run after a customer to return it.
+
+From an economic perspective, tipping is something of a puzzle. A tip is a voluntary payment made after a service has already been received, so a purely self-interested customer would have no reason to leave one, particularly in a restaurant they never intend to visit again. The fact that most people tip anyway suggests that the practice is driven largely by social norms, guilt, and a desire to be seen as generous.
+
+Supporters of tipping argue that it gives workers an incentive to provide good service, since their earnings depend partly on the satisfaction of the customer. Research, however, has found that the size of a tip is only weakly related to the quality of the service. Other factors, such as the weather, the size of the bill, and even whether the server introduces themselves by name, appear to have a significant influence.
+
+Critics also argue that tipping can lead to unfairness. Studies have suggested that tips may be influenced by the appearance, age, or ethnic background of the server. In addition, kitchen staff who prepare the food often receive little or no share of the tips, creating inequality within the same restaurant.
+
+In recent years, the custom has expanded beyond restaurants. Digital payment screens in cafés, bakeries, and other shops now often suggest a tip, a trend that many customers find uncomfortable. This phenomenon has been described as "tipping fatigue."
+
+Some restaurants have experimented with abolishing tips altogether, raising menu prices instead and paying staff a higher wage. The results have been mixed, as some customers mistakenly believe that the restaurant has simply become more expensive. Changing a deeply rooted social custom, it seems, is far more difficult than changing a price.

@@ -47,7 +47,7 @@ span::after {
     margin-top: 1rem;
 }
 
-a.button {
+a.button, button.button {
     /*display: block;*/
     background-color: navy;
     /*border: 0.16em solid rgba(255, 255, 255, 0);*/
@@ -197,7 +197,7 @@ a.button {
         margin-top: 1rem;
     }
 
-    a.button {
+    a.button, button.button {
         /*display: inline-block;*/
         cursor: pointer;
         background-color: #333333;
@@ -215,7 +215,7 @@ a.button {
         transition: all 0.1s;
     }
 
-    a.button:hover {
+    a.button:hover, button.button:hover {
         border-color: black;
         background-color: firebrick;
         transform: translateX(3px);
@@ -312,4 +312,96 @@ a.button {
             opacity: 0;
         }
     }
+}
+/* ===== App screens (home, name prompt, game) ===== */
+[hidden] {
+    display: none !important;
+}
+
+button.button {
+    font-size: 1rem;
+    cursor: pointer;
+    margin: 0.3em 0.2em;
+}
+
+.panel {
+    background-color: ivory;
+    border: 1px solid black;
+    border-radius: 4px;
+    padding: 15px;
+    margin: 1rem 0;
+}
+
+.panel h2 {
+    margin-top: 0;
+}
+
+.small {
+    font-size: 0.85rem;
+}
+
+#nameInput {
+    font-size: 1.2rem;
+    padding: 0.3em;
+    width: 60%;
+    max-width: 300px;
+}
+
+.statGrid {
+    display: flex;
+    justify-content: space-around;
+    text-align: center;
+    margin-bottom: 0.5rem;
+}
+
+.statNum {
+    font-size: 2rem;
+    font-weight: bold;
+    color: navy;
+}
+
+.statLabel {
+    font-size: 0.85rem;
+}
+
+.choiceRow {
+    display: flex;
+    gap: 0.4rem;
+    margin-bottom: 0.6rem;
+}
+
+.choiceRow label {
+    flex: 1;
+}
+
+.choiceRow input {
+    position: absolute;
+    opacity: 0;
+}
+
+.choiceRow b {
+    display: block;
+    text-align: center;
+    padding: 0.5em 0;
+    border: 1px solid black;
+    border-radius: 3px;
+    background-color: white;
+    cursor: pointer;
+}
+
+.choiceRow input:checked + b {
+    background-color: greenyellow;
+}
+
+.choiceRow input:focus-visible + b {
+    outline: 2px solid navy;
+}
+
+#gameTitle {
+    margin-bottom: 0.2rem;
+}
+
+#instructions {
+    display: block;
+    margin-top: 0;
 }

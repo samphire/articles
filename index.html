@@ -1,26 +1,75 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ko">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
     <title>Article Trainer</title>
-    <script src="articles.js"></script>
+    <meta name="theme-color" content="#000080">
+    <link rel="manifest" href="manifest.json">
+    <script src="articles.js" defer></script>
     <link rel="stylesheet" href="articles.css">
-    <link rel="shortcut icon" type="image/png" href="https://notborder.org/articles/icon-192x192.png">
-    <link rel="shortcut icon" sizes="192x192" href="https://notborder.org/articles/icon-192x192.png">
-    <link rel="apple-touch-icon" href="https://notborder.org/articles/icon-192x192.png">
+    <link rel="shortcut icon" type="image/png" href="icon-192.png">
+    <link rel="apple-touch-icon" href="icon-192x192.png">
 </head>
 <body>
 <h1>Article Trainer: a, an, the</h1>
 <div id="container">
-    <h2>상자에 텍스트를 복사하여 붙여 넣기:</h2>
-    <h3 id="instructions" style="display: none">관사가 있어야한다고 생각되면 다음 단어를 클릭하십시오.</h3>
-    <div id="terry" contenteditable="true" onpaste="pastey(event)" >
-    </div>
 
-    <br><br>
-    <!--<button onclick="prepArticles(); document.getElementById('btnHint').style.display = 'block';">Prepare Articles</button>-->
-    <a class="button" id="btnHint" onclick="showHint();" style="display: none;">힌트 ㅜㅜ</a>
+    <!-- First launch: ask for the player's name -->
+    <section id="nameScreen" class="screen panel" hidden>
+        <h2>이름을 입력하세요:</h2>
+        <form id="nameForm">
+            <input id="nameInput" type="text" maxlength="30" autocomplete="name" required>
+            <button type="submit" class="button">시작</button>
+        </form>
+    </section>
+
+    <!-- Home / splash: stats and new-game choices -->
+    <section id="homeScreen" class="screen" hidden>
+        <div class="panel" id="stats">
+            <h2 id="greeting"></h2>
+            <div class="statGrid">
+                <div><div class="statNum" id="statGames">0</div><div class="statLabel">게임</div></div>
+                <div><div class="statNum" id="statMax">–</div><div class="statLabel">최고</div></div>
+                <div><div class="statNum" id="statMin">–</div><div class="statLabel">최저</div></div>
+                <div><div class="statNum" id="statAvg">–</div><div class="statLabel">평균</div></div>
+            </div>
+            <a href="#" id="changeName" class="small">이름 변경</a>
+        </div>
+
+        <div class="panel">
+            <h2>새 게임</h2>
+            <div class="choiceRow" role="radiogroup" aria-label="난이도">
+                <label><input type="radio" name="level" value="easy" checked><b>쉬움</b></label>
+                <label><input type="radio" name="level" value="medium"><b>보통</b></label>
+                <label><input type="radio" name="level" value="hard"><b>어려움</b></label>
+            </div>
+            <div class="choiceRow" role="radiogroup" aria-label="길이">
+                <label><input type="radio" name="length" value="short" checked><b>짧게</b></label>
+                <label><input type="radio" name="length" value="medium"><b>보통</b></label>
+                <label><input type="radio" name="length" value="long"><b>길게</b></label>
+            </div>
+            <p id="remaining" class="small"></p>
+            <button id="btnNewGame" class="button">게임 시작</button>
+        </div>
+
+        <div class="panel">
+            <h2>내 텍스트로 연습</h2>
+            <p class="small">다른 앱이나 웹사이트에서 영어 텍스트를 복사한 후 누르세요.</p>
+            <button id="btnClipboard" class="button">클립보드에서 붙여넣기</button>
+        </div>
+    </section>
+
+    <!-- Game -->
+    <section id="gameScreen" class="screen" hidden>
+        <h3 id="gameTitle"></h3>
+        <h3 id="instructions">관사가 있어야한다고 생각되면 다음 단어를 클릭하십시오.</h3>
+        <div id="terry"></div>
+        <br>
+        <button class="button" id="btnHint">힌트 ㅜㅜ</button>
+        <button class="button" id="btnHome">홈으로</button>
+        <button class="button" id="btnNext" hidden>다음 게임</button>
+    </section>
 </div>
 <div id="toast"></div>
 
@@ -29,7 +78,6 @@
     <span class="opt" id="a">a</span>
     <span class="opt" id="an">an</span>
 </div>
-
 
 </body>
 </html>

@@ -2,12 +2,11 @@
 <project version="4">
   <component name="WebServers">
     <option name="servers">
-      <webServer id="0272971a-59f8-4ad8-aea6-cdd810bcdbdf" name="AWSLinux2" url="http://notborder.org">
-        <fileTransfer host="notborder.org" port="22" privateKey="C:\Users\matthew\.ssh\matt_linux2.ppk" rootFolder="/var/www/html" accessType="SFTP" keyPair="true">
+      <webServer id="1f54ba81-4f32-4347-a162-c2522d372d7d" name="AWS" url="http://notborder.org">
+        <fileTransfer rootFolder="/var/www/html" accessType="SFTP" host="notborder.org" port="22" sshConfigId="52510ecb-0b15-4ee7-a946-11dce0e59d76" sshConfig="ec2-user@notborder.org:22 key" keyPair="true">
           <advancedOptions>
-            <advancedOptions dataProtectionLevel="Private" shareSSLContext="true" />
+            <advancedOptions dataProtectionLevel="Private" passiveMode="true" shareSSLContext="true" />
           </advancedOptions>
-          <option name="port" value="22" />
         </fileTransfer>
       </webServer>
     </option>

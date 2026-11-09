@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="SshConfigs">
+    <configs>
+      <sshConfig host="notborder.org" id="11749448-ce7d-451e-8abd-7a9fc98e0e44" keyPath="C:\Users\matthew\.ssh\matt_linux2.ppk" port="22" customName="AWSLinux2" nameFormat="CUSTOM" useOpenSSHConfig="true">
+        <option name="customName" value="AWSLinux2" />
+      </sshConfig>
+    </configs>
+  </component>
+</project>

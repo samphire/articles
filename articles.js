@@ -1,11 +1,15 @@
-var bob, hintCount;
+var bob, hintCount, toastTimer;
 
 function yummyToast(msg) {
     let x = document.getElementById("toast");
     x.innerText = msg;
     x.style.left = Math.round(bob.topleftX + ((bob.bottomrightX - bob.topleftX) / 2) - (x.clientWidth / 2)) + "px";
+    // Restart the animation and timer so a new toast isn't cut short by the previous one's timeout.
+    clearTimeout(toastTimer);
+    x.className = "";
+    void x.offsetWidth;
     x.className = "show";
-    setTimeout(function () {
+    toastTimer = setTimeout(function () {
         x.className = x.className.replace("show", "");
     }, 3000);
 }
@@ -35,11 +39,31 @@ function getPosition(el) {
     };
 }
 
-var tries, articles, articleCount, spanText, elHidden;
+// A token counts as an article only if, ignoring surrounding punctuation, it is exactly
+// "the", "a" or "an". (The old /\ba\b/ test also hid things like "a.m." and "U.S.A.")
+var ARTICLE_PATTERN = /^[^\w]*(the|a|an)[^\w]*$/i;
+
+var tries, articles, articleCount;
+var gameActive = false;
+var pendingArticle = null;   // hidden article whose next word was just clicked
+var targetToArticle = null;  // word span -> hidden article span before it
+var hintTimer = null;
+var listenersAttached = false;
 
 function customPop(a, b, c, d, e, f) {
 } // have to declare it to prevent error
 
+function articleWord(el) {
+    const m = ARTICLE_PATTERN.exec(el.textContent);
+    return m ? m[1].toLowerCase() : null;
+}
+
+// Next word span after el, skipping the <br>s that mark line breaks.
+function nextWord(el) {
+    let n = el.nextElementSibling;
+    while (n && n.tagName !== "SPAN") n = n.nextElementSibling;
+    return n;
+}
 
 function textAreaSize() {
     let el = document.getElementById("terry");
@@ -55,127 +79,151 @@ function textAreaSize() {
 }
 
 function spanTerry() {
-    const text = document.getElementById("terry").innerText;
-    console.log("innerText: " + text);
-    // let TextArr = text.split(/[\r\n ]/g);
-    let TextArr = text.split(/[\s]/g);
-    // let TextArr = text.split(/[\b]/g);
-    // let TextArr = text.split(/[\r\n ]/g);
-    // let TextArr = text.split(/[\r\n ]/g);
-    console.log(TextArr.length);
-    for (let i = 0; i < TextArr.length; i++) {
-        if (TextArr[i].length > 0) {
-            TextArr[i] = "<span>" + TextArr[i] + "</span>";
-        }
-    }
-    let myString = "";
-
-    TextArr.forEach(function (item, idx, arr) {
-        myString += item;
+    const terry = document.getElementById("terry");
+    const lines = terry.innerText.split(/\r?\n/);
+    terry.textContent = "";
+    // Build the spans with textContent rather than innerHTML, so pasted text containing
+    // < or & shows up as typed instead of being parsed as HTML. Keep the line breaks too.
+    lines.forEach(function (line, idx) {
+        if (idx > 0) terry.appendChild(document.createElement("br"));
+        line.split(/\s+/).forEach(function (word) {
+            if (word.length > 0) {
+                const span = document.createElement("span");
+                span.textContent = word;
+                terry.appendChild(span);
+            }
+        });
     });
-    document.getElementById('terry').innerHTML = myString;
-    console.log(myString);
 }
 
 function pastey(e) {
     e.preventDefault();
+    if (gameActive) return;
     const clipboardData = e.clipboardData || window.clipboardData;
     const dataToPaste = clipboardData.getData("text/plain");
-    console.log("\n\ndataToPaste: " + dataToPaste + "\n\n");
     let el = document.getElementById("terry");
-    // el.setAttribute("pasted", null);
-    // el.removeChild(el.firstChild);
-    // el.textContent = "";
     el.innerText = dataToPaste;
     el.setAttribute("spellcheck", "false");
-    //spanTerry();
     prepArticles();
 }
 
-function prepArticles() {
-    spanTerry();
+function hidePicker() {
+    document.getElementById("picker").style.display = "none";
+    pendingArticle = null;
+}
+
+function onWordClick(e) {
+    if (!gameActive) return;
+    const span = e.target.closest("span");
+    if (!span || span.parentElement !== this) return;
+
+    ++tries;
+    const article = targetToArticle.get(span);
+    if (!article || article.classList.contains("found")) {
+        hidePicker();
+        return;
+    }
+
+    // Recalculate here: the page may have scrolled since the text was pasted.
+    bob = textAreaSize();
     const picker = document.getElementById("picker");
-    const patt = /(\bthe\b|\ba\b|\ban\b)/i; //the modifer \b means 'word boundary'. So having one at the start and end of the regex means 'match whole word'
-    const dom = document.getElementById("terry").getElementsByTagName("span"); //nodelist, not array
+    // Setting picker x
+    picker.style.left = (e.clientX - 80) + "px";
+    if ((e.clientX - 80) < bob.topleftX) picker.style.left = e.clientX + "px";
+    if ((e.clientX + 80) > bob.bottomrightX) picker.style.left = (e.clientX - 160) + "px";
+    // Setting picker y
+    picker.style.top = (e.clientY + 40) > bob.bottomrightY ? (e.clientY - 40) + "px" : (e.clientY + 30) + "px";
+    picker.style.display = "block";
+    pendingArticle = article;
+}
+
+function checky() {
+    if (!gameActive || !pendingArticle) return;
+    if (this.id !== articleWord(pendingArticle)) {
+        tries += 1;
+        return;
+    }
+
+    const found = pendingArticle;
+    found.classList.add("found");
+    found.style.display = "inline";
+    found.style.color = "";
+    found.style.fontWeight = "";
+    hidePicker();
+    --articleCount;
+    if (articleCount === 0) {
+        gameActive = false;
+        document.getElementById("btnHint").style.display = "none";
+        let msg = "all done\nYour score is " + Math.round(100 * articles / tries) + "%";
+        msg = hintCount > 0 ? msg + "\nBut you used " + hintCount + (hintCount === 1 ? " hint" : " hints ㅠㅠ") : msg;
+        bob = textAreaSize();
+        yummyToast(msg);
+    }
+}
+
+function attachListeners() {
+    if (listenersAttached) return;
+    listenersAttached = true;
+    document.getElementById("terry").addEventListener("click", onWordClick);
+    ["the", "a", "an"].forEach(function (id) {
+        document.getElementById(id).addEventListener("click", checky);
+    });
+}
+
+function prepArticles() {
+    attachListeners();
+    spanTerry();
+    const dom = Array.prototype.slice.call(document.getElementById("terry").getElementsByTagName("span"));
     tries = 0;
     articles = 0;
     bob = textAreaSize();
     hintCount = 0;
-    articleCount = 0;
+    targetToArticle = new Map();
+    hidePicker();
 
-    function checky() {
-        spanText = spanText.replace(/[^\w]/, "");
-        if (new RegExp("\\b" + spanText + "\\b", "i").test("" + this.id)) {
-            elHidden.style.display = "inline";
-            document.getElementById("picker").style.display = "none";
-            --articleCount;
-            if (articleCount === 0) {
-                let msg = "all done\nYour score is " + Math.round(100 * articles / tries) + "%";
-                msg = hintCount > 0 ? msg + "\nBut you used " + hintCount + (hintCount === 1 ? " hint" : " hints ㅠㅠ") : msg;
-                yummyToast(msg);
-            }
-        } else {
-            tries += 1;
-        }
-    }
-
-    Array.prototype.forEach.call(dom, function (el) { // this is a hack. should use for loop instead
-
-        el.addEventListener("click", function () {
-            ++tries;
-        });
-
-        if (patt.test(el.textContent)) {
-            articles++;
-            el.classList.add("article");
-            el.style.display = "none";
-            el.nextElementSibling.addEventListener("click", function (e) {
-                // Setting picker x
-                picker.style.left = (e.clientX - 80) + "px";
-                if ((e.clientX - 80) < bob.topleftX) picker.style.left = e.clientX + "px";
-                if ((e.clientX + 80) > bob.bottomrightX) picker.style.left = (e.clientX - 160) + "px";
-                // Setting picker y
-                picker.style.top = (e.clientY + 40) > bob.bottomrightY ? (e.clientY - 40) + "px" : (e.clientY + 30) + "px";
-
-                picker.style.display = "block";
-                spanText = el.textContent;
-                document.getElementById("the").addEventListener("click", checky);
-                document.getElementById("a").addEventListener("click", checky);
-                document.getElementById("an").addEventListener("click", checky);
-                elHidden = el; // global var
-            });
-        }
+    dom.forEach(function (el) {
+        if (!articleWord(el)) return;
+        const target = nextWord(el);
+        // Only hide an article that has a clickable word after it. If the next word is
+        // another article (or there is none), leave this one visible so the game can finish.
+        if (!target || articleWord(target)) return;
+        articles++;
+        el.classList.add("article");
+        el.style.display = "none";
+        targetToArticle.set(target, el);
     });
-    yummyToast("There are " + articles + " articles in this text.");
+
     articleCount = articles;
-    document.getElementById("btnHint").style.display = "inline-block";
-    document.getElementById("instructions").style.display = "inline";
+    gameActive = articles > 0;
+    yummyToast("There " + (articles === 1 ? "is 1 article" : "are " + articles + " articles") + " in this text.");
+    if (gameActive) {
+        document.getElementById("btnHint").style.display = "inline-block";
+        document.getElementById("instructions").style.display = "inline";
+    }
     document.getElementById("terry").blur();
     document.getElementById("terry").setAttribute("contenteditable", "false");
     document.getElementById("terry").setAttribute("readonly", "readonly");
 }
 
 function showHint() {
+    if (!gameActive || hintTimer) return; // ignore clicks while a hint is already showing
     ++hintCount;
-    let oldFontWeight, oldColor;
-    const dom = document.getElementById("terry").getElementsByTagName("span");
-    [].forEach.call(dom, function (el) {
-        if (el.style.display === "none") {
-            oldFontWeight = el.style.fontWeight;
-            oldColor = el.style.color;
-            el.style.display = "inline";
-            el.style.fontWeight = "bolder";
-            el.style.color = "red";
-        }
+    const hidden = Array.prototype.filter.call(
+        document.getElementById("terry").getElementsByClassName("article"),
+        function (el) { return !el.classList.contains("found"); }
+    );
+    hidden.forEach(function (el) {
+        el.style.display = "inline";
+        el.style.fontWeight = "bolder";
+        el.style.color = "red";
     });
-    setTimeout(function () {
-        [].forEach.call(dom, function (el) {
-            if (el.style.color === "red") {
-                el.style.color = oldColor;
-                el.style.fontWeight = oldFontWeight;
-                el.style.display = "none";
-            }
+    hintTimer = setTimeout(function () {
+        hintTimer = null;
+        hidden.forEach(function (el) {
+            el.style.color = "";
+            el.style.fontWeight = "";
+            // Don't re-hide an article the student found while the hint was showing.
+            if (!el.classList.contains("found")) el.style.display = "none";
         });
     }, 2000);
-
 }
